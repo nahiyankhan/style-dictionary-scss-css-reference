@@ -1,0 +1,8 @@
+{
+  "color": {
+    "background": { "value": "{color.base.white.value}" },
+    "button": {
+      "background": { "value": "{color.background.value}" }
+    }
+  }
+}
