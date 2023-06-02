@@ -1,13 +1,21 @@
 {
   "source": ["tokens/**/*.json"],
   "platforms": {
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "output/",
+      "files": [{
+        "destination": "tokens.scss",
+        "format": "custom/scss/variables",
+        "filter": "notBase"
+      }]
+    },
     "css": {
       "transformGroup": "css",
       "buildPath": "output/",
       "files": [{
-        "destination": "tokens.css",
-        "format": "custom/css/variables",
-        "filter": "excludeBase",
+        "destination": "vars.css",
+        "format": "css/variables",
         "options": {
           "outputReferences": true
         }

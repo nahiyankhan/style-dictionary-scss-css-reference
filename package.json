@@ -1,7 +1,7 @@
 {
-  "name": "style-dictionary-output-reference",
+  "name": "style-dictionary-scss-css-reference",
   "version": "1.0.0",
-  "description": "Testing including output references but omitting base or global values",
+  "description": "Demo to show scss referencing css vars",
   "main": "index.js",
   "scripts": {
     "build": "node ./build.js",

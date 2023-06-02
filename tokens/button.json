@@ -1,0 +1,11 @@
+{
+  "button": {
+    "color": {
+      "background": {
+        "primary": { 
+          "value": "{color.base.blue.value}" 
+        }
+      }
+    }
+  }
+}

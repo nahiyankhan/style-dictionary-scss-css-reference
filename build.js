@@ -1,35 +1,35 @@
 const StyleDictionary = require('style-dictionary');
 const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
 
-const resolveBaseReferences = (dictionary) => {
+const resolveCSSReference = (dictionary) => {
   dictionary.allTokens.map(token => {
-    if (token.original.value.includes('color.base.')) {
-      token.original.value = token.value
+    if (!token.original.value.includes('#')) {
+      token.value = resolveName(token.name)
     }
     return token
   })
   return dictionary
 }
 
+const resolveName = (name) => {
+  return `var(--${name})`
+}
+
 StyleDictionary.registerFilter({
-  name: 'excludeBase',
+  name: 'notBase',
   matcher: function(token) {
     return token.attributes.type != 'base'
   }
 });
 
 StyleDictionary.registerFormat({
-  name: 'custom/css/variables',
+  name: 'custom/scss/variables',
   formatter: function({dictionary, file, options}) {
-    const selector = options.selector ? options.selector : `:root`;
     const { outputReferences } = options;
-    dictionary = resolveBaseReferences(dictionary)
+    dictionary = resolveCSSReference(dictionary);
     return fileHeader({file}) +
-      `${selector} {\n` +
-      formattedVariables({format: 'css', dictionary, outputReferences}) +
-      '\n}\n';
+      formattedVariables({format: 'sass', dictionary, outputReferences});
   }
-  
 })
 
 // console.log('Build started...');
